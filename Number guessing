@@ -1,0 +1,22 @@
+!pip install gtts
+import random
+from gtts import gTTS
+from IPython.display import Audio
+n = random.randint(1,100)
+
+guess=1
+def speak(text):
+    tts = gTTS(text=text,lang="bn")
+    tts.save("output.mp3")
+    display(Audio("output.mp3",autoplay=True))
+a=0
+while(a!=n):
+      a=int(input("Gusse the number "))
+      if(a>n):
+        speak("Please enter lower number")
+        guess+=1
+      elif(a<n):
+        speak("Please enter higher number")
+        guess+=1
+      else:
+        speak(f"You gause the right number {n} in {guess} attempt")
